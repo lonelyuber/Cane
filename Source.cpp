@@ -2,7 +2,6 @@
 #include <string>
 #include <stdlib.h>
 #include <Windows.h>
-#include <cctype>
 using namespace std;
 
 void RandomColor();
