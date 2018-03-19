@@ -12,6 +12,7 @@ int main() {
 	string inventory[7];
 	string userinput;
 	/////// Game Introduction
+	system("COLOR D");
 	for (int i = 0; i < 20; i++)
 		cout << " " << '\n';
 
@@ -25,11 +26,11 @@ int main() {
 	cout << "Press Enter to Continue" << endl;
 	cin.ignore();
 
+	system("COLOR D");
 	cout << "What is your name?" << endl;
 	getline(cin, name);
 	system("CLS");
 
-	RandomColor();
 	cout << "Nice to meet you " << name << endl;
 	cout << "Welcome to Cane!" << endl;
 	cout << "You are here in Gustin's main deck." << endl;
@@ -413,13 +414,13 @@ return 0;
 // Random Color Gen
 void RandomColor()
 {
-	int color = rand() % 7 + 1;
+	int color = rand() % 6 + 1;
 
 	switch (color)
 	{
 
 	case 1:
-		system("COLOR 9");
+		system("COLOR 3");
 		break;
 
 	case 2:
@@ -431,23 +432,19 @@ void RandomColor()
 		break;
 
 	case 4:
-		system("COLOR C");
-		break;
-
-	case 5:
 		system("COLOR D");
 		break;
 
-	case 6:
+	case 5:
 		system("COLOR E");
 		break;
 
-	case 7:
+	case 6:
 		system("COLOR F");
 		break;
 
-	case 8:
+	case 7:
 		system("COLOR 6");
 		break;
 	}  //end switch
-}  //end function rand color 
+}  //end function rand color
