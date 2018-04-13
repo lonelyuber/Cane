@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <Windows.h>
@@ -11,6 +11,8 @@ int main() {
 	string name; // User's name
 	string inventory[7];
 	string userinput;
+
+	bool shank = false;
 	/////// Game Introduction
 	system("COLOR D");
 	for (int i = 0; i < 20; i++)
@@ -85,6 +87,12 @@ int main() {
 			system("CLS");
 			cout << "You are now at the Stern" << endl;
 			cout << endl;
+			// ADD INVENTORY 
+			if (shank == true) {
+				cout << "You got a shank" << endl;
+				inventory[1] = "shank";
+			}
+			shank = true;
 			getline(cin, userinput); {
 				Sleep(1);
 				if (userinput.compare("bow") == 0)
@@ -447,4 +455,4 @@ void RandomColor()
 		system("COLOR 6");
 		break;
 	}  //end switch
-}  //end function rand color
+}  //end function rand color 
