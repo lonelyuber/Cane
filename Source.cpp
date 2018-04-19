@@ -1,4 +1,5 @@
-﻿#include <iostream>
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <Windows.h>
@@ -11,6 +12,12 @@ int main() {
 	string name; // User's name
 	string inventory[7];
 	string userinput;
+	int saveddata;
+
+	ifstream save;
+	save.open("save.txt");
+	save >> saveddata;
+	save.close();
 
 	bool shank = false;
 	/////// Game Introduction
@@ -43,10 +50,23 @@ int main() {
 	// Rooms
 	char input = 'A';
 	int room = 1;
-	while (input != 'B') {
-		switch (room) {                                                                                                                 
 
-		case 1: // Bow
+	//Loading Save Data
+	cout << "Would you like to load your saved data?" << endl;
+	cout << "y / n" << endl;
+	getline(cin, userinput);
+	if (userinput.compare("y") == 0)
+		room = saveddata;
+	cout << "Loaded." << endl;
+	if (userinput.compare("n") == 0)
+		room = 1;
+	else (userinput != "y" || userinput != "n");
+	cout << "Option not recognized." << endl;
+
+	while (userinput.compare("quit") != 0) {
+		switch (room) {
+
+		case 1: // Main Deck
 			RandomColor();
 			system("CLS");
 			cout << "*Location - Main Deck" << endl;
@@ -55,26 +75,11 @@ int main() {
 			// get user input
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
 				if (userinput.compare("1st class") == 0)
 					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
 				if (userinput.compare("bathroom") == 0)
+
 					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo room") == 0)
-					room = 9;
-				if (userinput.compare("boiler room") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -95,24 +100,8 @@ int main() {
 			shank = true;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
 				if (userinput.compare("lobby") == 0)
 					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
 				if (userinput.compare("boiler") == 0)
 					room = 10;
 
@@ -129,26 +118,10 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
 				if (userinput.compare("stern") == 0)
 					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
 				if (userinput.compare("2nd class") == 0)
 					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -163,26 +136,12 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
 				if (userinput.compare("lobby") == 0)
 					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
 				if (userinput.compare("2nd class") == 0)
 					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
 				if (userinput.compare("captain's room") == 0)
 					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -197,26 +156,10 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
 				if (userinput.compare("bathroom") == 0)
 					room = 7;
 				if (userinput.compare("captain's room") == 0)
 					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -231,22 +174,6 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
 				if (userinput.compare("cargo") == 0)
 					room = 9;
 				if (userinput.compare("boiler") == 0)
@@ -265,26 +192,10 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
 				if (userinput.compare("stern") == 0)
 					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
 				if (userinput.compare("1st class") == 0)
 					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -300,26 +211,10 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
 				if (userinput.compare("officer quarters") == 0)
 					room = 4;
 				if (userinput.compare("1st class") == 0)
 					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -334,24 +229,6 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
-				if (userinput.compare("stern") == 0)
-					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
-				if (userinput.compare("cargo") == 0)
-					room = 9;
 				if (userinput.compare("boiler") == 0)
 					room = 10;
 
@@ -369,26 +246,10 @@ int main() {
 			cout << endl;
 			getline(cin, userinput); {
 				Sleep(1);
-				if (userinput.compare("bow") == 0)
-					room = 1;
 				if (userinput.compare("stern") == 0)
 					room = 2;
-				if (userinput.compare("lobby") == 0)
-					room = 3;
-				if (userinput.compare("officer quarters") == 0)
-					room = 4;
-				if (userinput.compare("1st class") == 0)
-					room = 5;
-				if (userinput.compare("2nd class") == 0)
-					room = 6;
-				if (userinput.compare("bathroom") == 0)
-					room = 7;
-				if (userinput.compare("captain's room") == 0)
-					room = 8;
 				if (userinput.compare("cargo") == 0)
 					room = 9;
-				if (userinput.compare("boiler") == 0)
-					room = 10;
 
 				if (userinput == "Map" || userinput == "map") // Map
 					cout << Map();
@@ -398,25 +259,75 @@ int main() {
 
 		}//end switch
 	}//end game loop
+	ofstream saving;
+	saving.open("save.txt");
+	saving << room;
+	saving.close();
+	cout << "Your data is saved." << endl;
+	system("pause");
+
+	return 0;
+
 }//------------------------------------------------- end main
 
  // Map
 char Map()
 {
 	cout << endl;
-	cout << "Main deck" << '\n';
-	cout << "Lobby" << '\n';
-	cout << "Stern" << '\n';
-	cout << "Officer Quarters" << '\n';
-	cout << "1st class" << '\n';
-	cout << "2nd class" << '\n';
-	cout << "Bathroom" << '\n';
-	cout << "Captain's Room" << '\n';
-	cout << "Cargo Room" << '\n';
-	cout << "Boiler Room" << '\n';
+	cout << "S.S. Cane Map" << '\n';
 	cout << endl;
+	system("COLOR D");
+	// Main Deck
+	cout << "Main deck" << '\n';
+	cout << "   -> Bathroom" << '\n';
+	cout << "   -> 1st class" << '\n';
 
-return 0;
+	// Lobby
+	cout << "Lobby" << '\n';
+	cout << "   -> 2nd Class" << '\n';
+	cout << "   -> Stern" << '\n';
+
+	// Stern
+	cout << "Stern" << '\n';
+	cout << "   -> Lobby" << '\n';
+	cout << "   -> Boiler Room" << '\n';
+
+	//Office Quarters
+	cout << "Officer Quarters" << '\n';
+	cout << "   -> Captain's room" << '\n';
+	cout << "   -> Lobby" << '\n';
+	cout << "   -> 2nd Class" << '\n';
+
+	// 1st Class
+	cout << "1st class" << '\n';
+	cout << "   -> Bathroom" << '\n';
+	cout << "   -> Captain's room" << '\n';
+
+	// 2nd Class
+	cout << "2nd class" << '\n';
+	cout << "   -> Boiler" << '\n';
+	cout << "   -> Cargo" << '\n';
+
+	// Bathroom
+	cout << "Bathroom" << '\n';
+	cout << "   -> Stern" << '\n';
+	cout << "   -> 1st Class" << '\n';
+
+	// Captain's Room
+	cout << "Captain's Room" << '\n';
+	cout << "   -> Office Quarters" << '\n';
+	cout << "   -> 1st Class" << '\n';
+
+	// Cargo Room
+	cout << "Cargo Room" << '\n';
+	cout << "   -> Boiler" << '\n';
+
+	// Boiler Room
+	cout << "Boiler Room" << '\n';
+	cout << "   -> Stern" << '\n';
+	cout << "   -> Cargo" << '\n';
+	cout << endl;
+	return 0;
 }
 
 // Random Color Gen
