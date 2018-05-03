@@ -51,17 +51,26 @@ int main() {
 	char input = 'A';
 	int room = 1;
 
-	//Loading Save Data
-	cout << "Would you like to load your saved data?" << endl;
-	cout << "y / n" << endl;
-	getline(cin, userinput);
-	if (userinput.compare("y") == 0)
-		room = saveddata;
-	cout << "Loaded." << endl;
-	if (userinput.compare("n") == 0)
-		room = 1;
-	else (userinput != "y" || userinput != "n");
-	cout << "Option not recognized." << endl;
+	do {
+		//Loading Save Data
+		cout << "Would you like to load your saved data?" << endl;
+		cout << "y / n" << endl;
+		getline(cin, userinput);
+
+		if (userinput.compare("y") == 0) {
+			room = saveddata;
+			cout << "Loaded." << endl;
+		}
+
+		if (userinput.compare("n") == 0)
+			room = 1;
+
+		else if (userinput != "y" && userinput != "n") {
+			cout << "Option not recognized." << endl;
+			cin.ignore();
+		}
+
+	} while (userinput != "y" && userinput != "n");
 
 	while (userinput.compare("quit") != 0) {
 		switch (room) {
